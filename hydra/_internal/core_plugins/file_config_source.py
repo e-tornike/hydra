@@ -10,7 +10,7 @@ from hydra.plugins.config_source import ConfigLoadError, ConfigResult, ConfigSou
 
 class FileConfigSource(ConfigSource):
     def __init__(self, provider: str, path: str) -> None:
-        if path.find("://") == -1:
+        if str(path).find("://") == -1:
             path = f"{self.scheme()}://{path}"
         super().__init__(provider=provider, path=path)
 
