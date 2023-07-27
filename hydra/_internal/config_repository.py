@@ -140,7 +140,7 @@ class ConfigRepository(IConfigRepository):
 
     @staticmethod
     def _get_scheme(path: str) -> str:
-        idx = path.find("://")
+        idx = str(path).find("://")
         if idx == -1:
             return "file"
         else:
@@ -150,7 +150,7 @@ class ConfigRepository(IConfigRepository):
         self,
         group_with_package: str,
     ) -> Tuple[str, Optional[str], Optional[str]]:
-        idx = group_with_package.find("@")
+        idx = str(group_with_package).find("@")
         if idx == -1:
             # group
             group = group_with_package
